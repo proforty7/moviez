@@ -1,10 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { ThemeProvider } from "react-native-elements";
+import MHeader from "./components/MHeader";
 
 export default function App() {
+  const theme = {
+    Header: {
+      backgroundColor: "#c0392b"
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <ThemeProvider theme={theme}>
+        <MHeader />
+      </ThemeProvider>
     </View>
   );
 }
@@ -12,8 +22,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#2c3e50"
+  }
 });
