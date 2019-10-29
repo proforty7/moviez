@@ -2,9 +2,11 @@ import React, { Component, useEffect, useState } from "react";
 import { Text, View, ActivityIndicator, StyleSheet } from "react-native";
 import api from "../api";
 import { API_KEY } from "../config/keys";
+import Section from "./Section";
 
 const Body = () => {
   const [loading, setLoading] = useState(true);
+  const [popularList, setPopularList] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +21,7 @@ const Body = () => {
             backdrop_path: item.backdrop_path
           };
         });
-        console.log(data.length);
+        setPopularList(data);
       } catch (err) {
         console.log(err);
       } finally {
@@ -34,7 +36,7 @@ const Body = () => {
       {loading ? (
         <ActivityIndicator size="large" color="#c0392b" />
       ) : (
-        <Text>ok</Text>
+        <Section title="Most Popular" list={popularList} />
       )}
     </View>
   );
