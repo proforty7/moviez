@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { ThemeProvider } from "react-native-elements";
 import MHeader from "./components/MHeader";
+import Body from "./components/Body";
 
 export default function App() {
   const theme = {
@@ -14,6 +15,7 @@ export default function App() {
     <View style={styles.container}>
       <ThemeProvider theme={theme}>
         <MHeader />
+        <Body />
       </ThemeProvider>
     </View>
   );
@@ -22,6 +24,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2c3e50"
+    backgroundColor: "#2d3436"
   }
 });
