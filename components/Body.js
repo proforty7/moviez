@@ -1,9 +1,12 @@
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import Section from "./Section";
+import { useSelector } from "react-redux";
 
 const Body = () => {
   // const [loading, setLoading] = useState(true);
+  const searchText = useSelector(state => state.search);
+  console.log(searchText);
 
   return (
     <ScrollView style={styles.container}>

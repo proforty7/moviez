@@ -1,16 +1,25 @@
 import React, { Component, useState } from "react";
 import { Text, View, StatusBar } from "react-native";
 import { Header, SearchBar, Icon } from "react-native-elements";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearch } from "../actions";
 
 export default MHeader = () => {
-  const [search, setSearch] = useState(false);
+  const [search, setShowSearch] = useState(false);
+  const value = useSelector(state => state.search);
+
+  const dispatch = useDispatch();
 
   const onSearchClick = () => {
-    setSearch(true);
+    setShowSearch(true);
   };
 
   const onCancelClick = () => {
-    setSearch(false);
+    setShowSearch(false);
+  };
+
+  const onChangeInput = value => {
+    dispatch(setSearch(value));
   };
 
   return (
@@ -19,8 +28,10 @@ export default MHeader = () => {
         <View style={{ marginTop: StatusBar.currentHeight }}>
           <SearchBar
             placeholder="Type here..."
+            onChangeText={onChangeInput}
             onCancel={onCancelClick}
             onClear={onCancelClick}
+            value={value}
           />
         </View>
       ) : (
